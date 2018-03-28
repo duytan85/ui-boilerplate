@@ -1,0 +1,65 @@
+{
+  "name": "Boilerplate",
+  "version": "1.0.0",
+  "description": "NodeJS, Express, React, React Router, Redux, Redux Saga, SASS, Jest, Babel, ESLint, Webpack boilerplate",
+  "main": "index.js",
+  "repository": "https://github.com/duytan85/boilerplate",
+  "author": "Duytan Hoang <duytanhoang85@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "---------- RUN ----------": "",
+    "start:dev": "concurrently \"better-npm-run start-dev-client\" \"better-npm-run start-dev-server\"",
+    "start:temp": "webpack-dev-server --mode development --config config/webpack/webpack.config.dev.js",
+    "start:server": "better-npm-run start-dev-server"
+  },
+  "betterScripts": {
+    "start-dev-server": {
+      "command": "nodemon src/server.js --watch src --exec babel-node",
+      "env": {
+        "NODE_ENV": "development",
+        "BABEL_ENV": "server"
+      }
+    },
+    "start-dev-client": {
+      "command": "webpack-dev-server --host 0.0.0.0 --config config/webpack/webpack.config.dev.js",
+      "env": {
+        "NODE_ENV": "development",
+        "BABEL_ENV": "client"
+      }
+    }
+  },
+  "dependencies": {
+    "better-npm-run": "^0.1.0",
+    "express": "^4.16.3",
+    "express-ping": "^1.4.0",
+    "history": "^4.7.2",
+    "nconf": "^0.10.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "reduce-reducers": "^0.1.2",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0"
+  },
+  "devDependencies": {
+    "assets-webpack-plugin": "^3.5.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.5.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "nodemon": "^1.17.2",
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
