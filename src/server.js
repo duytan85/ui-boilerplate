@@ -14,20 +14,17 @@ export default (req, res) => {
     store
   };
 
-  const componentHtml = initialStore => ReactDOMServer.renderToString(
+  const componentHtml = initialStore => ReactDOMServer.renderToString( // eslint-disable-line function-paren-newline
     <Provider store={initialStore}>
       <Router location={req.url} context={staticContext}>
         <App />
       </Router>
-    </Provider>
-  );
+    </Provider>);
 
-  const rootMarkup = ReactDOMServer.renderToString(
-    <Html
-      content={componentHtml(store)}
-      initialState={staticContext.store.getState()}
-    />
-  );
+  const rootMarkup = ReactDOMServer.renderToString(<Html
+    content={componentHtml(store)}
+    initialState={staticContext.store.getState()}
+  />);
 
   res
     .status(staticContext.status)

@@ -17,7 +17,7 @@ const HtmlContainer = ({ content, initialState }) => (
     <body>
       <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
       {initialState && renderInitialState(initialState)}
-      <script src={asset.wishlist.js} type="text/javascript" />
+      <script src={asset.main.js} type="text/javascript" />
     </body>
   </html>
 );

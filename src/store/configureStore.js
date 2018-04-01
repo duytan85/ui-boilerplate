@@ -9,10 +9,10 @@ export let history; // eslint-disable-line import/no-mutable-exports
 let routingMiddleware = routerMiddleware();
 const sagaMiddleware = createSagaMiddleware();
 
-// if (__CLIENT__) {
-//   history = createHistory();
-//   routingMiddleware = routerMiddleware(history);
-// }
+if (__CLIENT__) {
+  history = createHistory();
+  routingMiddleware = routerMiddleware(history);
+}
 
 const enhancer = () => {
   if (__DEV__) {
@@ -33,13 +33,12 @@ const enhancer = () => {
 export default function configureStore(initialState) {
   const store = createStore(rootReducer, initialState, enhancer());
 
-  // TODO: https://github.com/reactjs/react-redux/releases/tag/v2.0.0
-  // if (module.hot) {
-  //   module.hot.accept('../redux', () => {
-  //     const nextRootReducer = require('../redux')
-  //     store.replaceReducer(nextRootReducer)
-  //   })
-  // }
+  if (module.hot) {
+    module.hot.accept('../redux/rootReducer', () => {
+      const nextRootReducer = require('../redux/rootReducer');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
 
   store.runSaga = sagaMiddleware.run;
 

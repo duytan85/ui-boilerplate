@@ -9,26 +9,29 @@
   "scripts": {
     "---------- RUN ----------": "",
     "start:dev": "concurrently \"better-npm-run start-dev-client\" \"better-npm-run start-dev-server\"",
-    "start:temp": "webpack-dev-server --mode development --config config/webpack/webpack.config.dev.js",
-    "start:server": "better-npm-run start-dev-server"
+    "start:server": "better-npm-run start-dev-server",
+    "start:client": "better-npm-run start-dev-client",
+    "---------- LINT ----------": "",
+    "lint": "yarn run lint:js",
+    "lint:js": "eslint --ext .js --ext .jsx src config",
+    "lint:fix": "eslint --ext .js --ext .jsx src config --fix"
   },
   "betterScripts": {
     "start-dev-server": {
-      "command": "nodemon src/server.js --watch src --exec babel-node",
+      "command": "nodemon src/index.js --watch src --exec babel-node",
       "env": {
-        "NODE_ENV": "development",
-        "BABEL_ENV": "server"
+        "NODE_ENV": "development"
       }
     },
     "start-dev-client": {
-      "command": "webpack-dev-server --host 0.0.0.0 --config config/webpack/webpack.config.dev.js",
+      "command": "webpack-dev-server --config config/webpack/webpack.config.dev.js",
       "env": {
-        "NODE_ENV": "development",
-        "BABEL_ENV": "client"
+        "NODE_ENV": "development"
       }
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "better-npm-run": "^0.1.0",
     "express": "^4.16.3",
     "express-ping": "^1.4.0",
@@ -57,8 +60,9 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "lodash.clonedeep": "^4.5.0",
     "nodemon": "^1.17.2",
-    "webpack": "^4.3.0",
+    "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^3.1.1"
   }

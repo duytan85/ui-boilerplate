@@ -2,7 +2,7 @@ import nconf from 'nconf';
 import express from 'express';
 import health from 'express-ping';
 
-import './utils/isomorphicGlobals';
+import './utils/appGlobals';
 
 // -------------------------------------------------
 // SETTINGS
@@ -31,7 +31,7 @@ app.listen(port, (err) => {
   }
 
   console.info('');
-  console.info(`✅  Server running on 👉 👉 👉  http://localhost:${port} 👈 👈 👈 `);
+  console.info(`✅  Server running on 👉 👉 👉  http://localhost:${__DEV__ ? port - 1 : port} 👈 👈 👈 `);
   console.info(`🏠  NODE_ENV has been set to: ${nconf.get('NODE_ENV')}`);
   console.info('');
 });
