@@ -1,9 +1,9 @@
 import cloneDeep from 'lodash.clonedeep';
 
 import {
-  GET_DETAILS_REQUEST,
-  GET_DETAILS_SUCCESS,
-  GET_DETAILS_FAILURE
+  GET_ARTISTS_REQUEST,
+  GET_ARTISTS_SUCCESS,
+  GET_ARTISTS_FAILURE
 } from './constants';
 
 const initialState = {
@@ -18,16 +18,16 @@ export default (state = initialState, action) => {
   const newState = cloneDeep(state);
 
   switch (action.type) {
-    case GET_DETAILS_REQUEST: {
+    case GET_ARTISTS_REQUEST: {
       newState.ui.isRequesting = true;
       return newState;
     }
-    case GET_DETAILS_SUCCESS: {
+    case GET_ARTISTS_SUCCESS: {
       newState.ui.isRequesting = false;
-      newState.data.products = action.payload.data.products;
+      newState.data = action.payload;
       return newState;
     }
-    case GET_DETAILS_FAILURE: {
+    case GET_ARTISTS_FAILURE: {
       newState.ui.isRequesting = false;
       newState.error = action.error;
       return newState;

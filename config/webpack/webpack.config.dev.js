@@ -10,7 +10,10 @@ module.exports = {
   mode: isDevMode() ? 'development' : 'production',
   devtool: 'source-map',
   entry: {
-    main: './src/client.js'
+    main: [
+      'babel-polyfill',
+      './src/client.js'
+    ]
   },
   output: {
     filename: '[name].bundle.js',

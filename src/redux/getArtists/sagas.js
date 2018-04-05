@@ -1,18 +1,18 @@
 import { take, put, call, fork } from 'redux-saga/effects';
 
 import makeApiRequest from '../../utils/makeApiRequest';
-import { GET_DETAILS } from './constants';
+import { GET_ARTISTS } from './constants';
 import {
-  getDetailsRequest,
-  getDetailsFailure,
-  getDetailsSuccess
+  getArtistsRequest,
+  getArtistsFailure,
+  getArtistsSuccess
 } from './actions';
 
 // -------------------------------------------------
 // WORKER SAGAS
 // -------------------------------------------------
-export function* getDetails(request) {
-  yield put(getDetailsRequest());
+export function* getArtists(request) {
+  yield put(getArtistsRequest());
 
   try {
     const payload = yield call(makeApiRequest, {
@@ -22,22 +22,22 @@ export function* getDetails(request) {
     console.log('payload: ', payload);
 
     if (payload) {
-      yield put(getDetailsSuccess());
+      yield put(getArtistsSuccess());
     } else {
-      yield put(getDetailsFailure());
+      yield put(getArtistsFailure());
     }
   } catch (error) {
-    yield put(getDetailsFailure());
+    yield put(getArtistsFailure());
   }
 }
 
 // -------------------------------------------------
 // WATCHER SAGAS
 // -------------------------------------------------
-export default function* watchGetDetails() {
+export default function* watchgetArtists() {
   while (true) {
-    const { request } = yield take(GET_DETAILS);
+    const { request } = yield take(GET_ARTISTS);
 
-    yield fork(getDetails, request);
+    yield fork(getArtists, request);
   }
 }
