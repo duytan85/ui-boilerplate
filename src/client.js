@@ -12,14 +12,21 @@ const store = configureStore(window.__INITIAL_STATE__);
 
 store.runSaga(rootSaga);
 
+// hydrate(
+//   <ErrorBoundary>
+//     <Provider store={store}>
+//       <Router history={history}>
+//         <App />
+//       </Router>
+//     </Provider>
+//   </ErrorBoundary>,
+//   document.getElementById('root')
+// );
+
 hydrate(
-  <ErrorBoundary>
-    <Provider store={store}>
-      <Router history={history}>
-        <App />
-      </Router>
-    </Provider>
-  </ErrorBoundary>,
+  <div>
+    <h1>Hello World!</h1>
+  </div>,
   document.getElementById('root')
 );
 

@@ -38,7 +38,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true,
+    }),
     new AssetsPlugin({
       filename: 'asset-tags.json',
       path: 'src',
