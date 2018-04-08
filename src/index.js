@@ -1,6 +1,8 @@
 import nconf from 'nconf';
 import express from 'express';
+import path from 'path';
 import health from 'express-ping';
+import favicon from 'serve-favicon';
 
 import './utils/appGlobals';
 
@@ -13,6 +15,8 @@ nconf.argv()
 
 const app = express();
 const port = nconf.get('APP_PORT') || 3000;
+
+app.use(favicon(path.join(__dirname, '../', 'public', 'favicon.ico')));
 
 // -------------------------------------------------
 // ROUTES
@@ -32,6 +36,6 @@ app.listen(port, (err) => {
 
   console.info('');
   console.info(`✅  Server running on 👉 👉 👉  http://localhost:${__DEV__ ? port - 1 : port} 👈 👈 👈 `);
-  console.info(`🏠  NODE_ENV has been set to: ${nconf.get('NODE_ENV')}`);
+  console.info(`🏠  NODE_ENV has been set to: ${nconf.get('NODE_ENV') || 'production'}`);
   console.info('');
 });
