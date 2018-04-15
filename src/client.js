@@ -23,12 +23,5 @@ hydrate(
   document.getElementById('root')
 );
 
-// hydrate(
-//   <div>
-//     <h1>Hello World!</h1>
-//   </div>,
-//   document.getElementById('root')
-// );
-
 // Hot Module Replacement
 if (module.hot) module.hot.accept();

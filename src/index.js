@@ -1,6 +1,7 @@
 import nconf from 'nconf';
 import express from 'express';
 import path from 'path';
+import proxy from 'http-proxy-middleware';
 import health from 'express-ping';
 import favicon from 'serve-favicon';
 
@@ -23,6 +24,8 @@ app.use(favicon(path.join(__dirname, '../', 'public', 'favicon.ico')));
 // ROUTES
 // -------------------------------------------------
 app.use(health.ping('/health-check'));
+
+app.use('/search', proxy({ target: `${nconf.get('ITUNES_URL')}`, changeOrigin: true }));
 
 app.get('*', require('./server').default);
 

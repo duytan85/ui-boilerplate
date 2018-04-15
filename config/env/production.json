@@ -1,5 +1,5 @@
 {
   "APP_PORT": 8080,
   "DEV_SERVER_PORT": null,
-  "SPOTIFY_URL": "https://api.spotify.com"
+  "ITUNES_URL": "https://itunes.apple.com"
 }

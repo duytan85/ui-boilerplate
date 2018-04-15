@@ -1,10 +1,10 @@
-import Home from '../containers/Home';
+import Root from '../containers/Root';
 
 export const routes = [
   {
-    id: 'home',
+    id: 'root',
     path: '/',
-    component: Home,
+    component: Root,
   }
 ];
 

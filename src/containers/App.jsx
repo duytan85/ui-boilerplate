@@ -5,7 +5,7 @@ import { getRoutePath, getRouteComponent } from '../routes';
 
 const AppContainer = () => (
   <Switch>
-    <Route exact path={getRoutePath('home')} component={getRouteComponent('home')} />
+    <Route exact path={getRoutePath('root')} component={getRouteComponent('root')} />
   </Switch>
 );
 

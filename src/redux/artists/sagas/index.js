@@ -11,25 +11,17 @@ import {
 // -------------------------------------------------
 // WORKER SAGAS
 // -------------------------------------------------
-function* getArtists(request) {
+function* getArtists(query) {
   yield put(getArtistsRequest());
 
   try {
     const payload = yield call(makeApiRequest, {
-      // url: `/v1/search?type=artist&q=${request.query}`
-      url: 'https://api.spotify.com/v1/search?type=artist&q=beatles'
+      url: `/search?term=${query}&entity=allArtist&attribute=allArtistTerm`
     });
 
-    console.log('payload: ', payload);
-
-    if (payload) {
-      yield put(getArtistsSuccess(payload));
-    } else {
-      yield put(getArtistsFailure());
-    }
+    yield put(getArtistsSuccess(payload.data));
   } catch (error) {
-    console.log('error: ', error);
-    yield put(getArtistsFailure());
+    yield put(getArtistsFailure(error.message));
   }
 }
 
@@ -38,8 +30,8 @@ function* getArtists(request) {
 // -------------------------------------------------
 export default function* watchGetArtists() {
   while (true) {
-    const { request } = yield take(GET_ARTISTS);
+    const { query } = yield take(GET_ARTISTS);
 
-    yield fork(getArtists, request);
+    yield fork(getArtists, query);
   }
 }
