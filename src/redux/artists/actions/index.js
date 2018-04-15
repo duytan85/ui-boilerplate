@@ -3,7 +3,7 @@ import {
   GET_ARTISTS_REQUEST,
   GET_ARTISTS_SUCCESS,
   GET_ARTISTS_FAILURE
-} from './constants';
+} from '../constants';
 
 export const getArtists = () => ({ type: GET_ARTISTS });
 export const getArtistsRequest = () => ({ type: GET_ARTISTS_REQUEST });

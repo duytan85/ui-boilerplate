@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getArtists } from '../../redux/getArtists/actions';
+import { getArtists } from '../../redux/artists/actions';
 
 class HomeContainer extends React.Component {
   static propTypes = {

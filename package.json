@@ -41,16 +41,10 @@
       }
     },
     "build-server": {
-      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.server.js",
-      "env": {
-        "NODE_ENV": "production"
-      }
+      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.server.js"
     },
     "build-client": {
-      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.client.js",
-      "env": {
-        "NODE_ENV": "production"
-      }
+      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.client.js"
     }
   },
   "dependencies": {

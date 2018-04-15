@@ -4,7 +4,7 @@ import {
   GET_ARTISTS_REQUEST,
   GET_ARTISTS_SUCCESS,
   GET_ARTISTS_FAILURE
-} from './constants';
+} from '../constants';
 
 const initialState = {
   ui: {
