@@ -1,8 +1,13 @@
 const webpack = require('webpack');
+const nconf = require('nconf');
 const AssetsPlugin = require('assets-webpack-plugin');
 
 const isDevMode = () =>
   (process.env.NODE_ENV === 'development');
+
+nconf.argv()
+  .env()
+  .file(`./config/env/${nconf.get('NODE_ENV')}.json`);
 
 module.exports = {
   mode: isDevMode() ? 'development' : 'production',
@@ -20,10 +25,10 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devServer: {
-    port: 3000,
+    port: nconf.get('DEV_SERVER_PORT'),
     hot: true,
     proxy: {
-      '/': 'http://localhost:3001'
+      '/': `http://localhost:${nconf.get('APP_PORT')}`
     }
   },
   module: {
@@ -36,6 +41,17 @@ module.exports = {
         }
       }
     ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin({

@@ -14,8 +14,9 @@ nconf.argv()
   .file(`./config/env/${nconf.get('NODE_ENV')}.json`);
 
 const app = express();
-const port = nconf.get('APP_PORT') || 3000;
+const port = nconf.get('APP_PORT');
 
+app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use(favicon(path.join(__dirname, '../', 'public', 'favicon.ico')));
 
 // -------------------------------------------------
@@ -35,7 +36,7 @@ app.listen(port, (err) => {
   }
 
   console.info('');
-  console.info(`✅  Server running on 👉 👉 👉  http://localhost:${__DEV__ ? port - 1 : port} 👈 👈 👈 `);
+  console.info(`✅  Server running on 👉 👉 👉  http://localhost:${__DEV__ ? nconf.get('DEV_SERVER_PORT') : port} 👈 👈 👈 `);
   console.info(`🏠  NODE_ENV has been set to: ${nconf.get('NODE_ENV') || 'production'}`);
   console.info('');
 });

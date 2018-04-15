@@ -18,6 +18,7 @@ const HtmlContainer = ({ content, initialState }) => (
     <body>
       <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
       {initialState && renderInitialState(initialState)}
+      <script src={asset.vendors.js} />
       <script src={asset.main.js} />
     </body>
   </html>

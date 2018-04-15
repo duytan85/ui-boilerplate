@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "---------- RUN ----------": "",
-    "start": "node dist/server.js",
+    "start": "better-npm-run start-prod",
     "start:dev": "concurrently \"better-npm-run start-dev-client\" \"better-npm-run start-dev-server\"",
     "start:server": "better-npm-run start-dev-server",
     "start:client": "better-npm-run start-dev-client",
@@ -23,7 +23,10 @@
   },
   "betterScripts": {
     "start-prod": {
-      "command": "node build/server.js"
+      "command": "node dist/server.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
     },
     "start-dev-server": {
       "command": "nodemon src/index.js --watch src --exec babel-node",
@@ -38,10 +41,16 @@
       }
     },
     "build-server": {
-      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.server.js"
+      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.server.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
     },
     "build-client": {
-      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.client.js"
+      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.client.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
     }
   },
   "dependencies": {
@@ -67,6 +76,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",

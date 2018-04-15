@@ -16,17 +16,19 @@ export function* getArtists(request) {
 
   try {
     const payload = yield call(makeApiRequest, {
-      url: `/v1/search?type=artist&q=${request.query}`
+      // url: `/v1/search?type=artist&q=${request.query}`
+      url: 'https://api.spotify.com/v1/search?type=artist&q=beatles'
     });
 
     console.log('payload: ', payload);
 
     if (payload) {
-      yield put(getArtistsSuccess());
+      yield put(getArtistsSuccess(payload));
     } else {
       yield put(getArtistsFailure());
     }
   } catch (error) {
+    console.log('error: ', error);
     yield put(getArtistsFailure());
   }
 }
