@@ -18,6 +18,10 @@
     "__SERVER__": true,
     "__CLIENT__": true,
     "window": true,
-    "document": true
+    "document": true,
+    "jest": true,
+    "describe": true,
+    "it": true,
+    "expect": true
   }
 }

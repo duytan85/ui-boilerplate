@@ -15,15 +15,15 @@ const SearchResultsComponent = (props) => {
   return (
     <div>
       <div>Number of results: { resultCount }</div>
-      {
-        results.map(obj => (
-          <ul>
+      <ul>
+        {
+          results.map(obj => (
             <ResultsItem
               key={obj.artistId}
               artistName={obj.artistName}
-            />
-          </ul>))
-      }
+            />))
+        }
+      </ul>
     </div>
   );
 };

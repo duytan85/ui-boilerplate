@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ResultsItem = (props) => {
+const ResultsItemComponent = (props) => {
   const { artistName } = props;
 
   return (
@@ -9,8 +9,8 @@ const ResultsItem = (props) => {
   );
 };
 
-ResultsItem.propTypes = {
+ResultsItemComponent.propTypes = {
   artistName: PropTypes.string.isRequired
 };
 
-export default ResultsItem;
+export default ResultsItemComponent;

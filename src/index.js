@@ -40,6 +40,6 @@ app.listen(port, (err) => {
 
   console.info('');
   console.info(`✅  Server running on 👉 👉 👉  http://localhost:${__DEV__ ? nconf.get('DEV_SERVER_PORT') : port} 👈 👈 👈 `);
-  console.info(`🏠  NODE_ENV has been set to: ${nconf.get('NODE_ENV') || 'production'}`);
+  console.info(`🏠  NODE_ENV has been set to: ${nconf.get('NODE_ENV')}`);
   console.info('');
 });
