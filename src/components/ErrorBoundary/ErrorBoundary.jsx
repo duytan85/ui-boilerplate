@@ -22,16 +22,19 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    if (this.state.hasError) {
+    const { hasError, errorInfo } = this.state;
+    const { children } = this.props;
+
+    if (hasError) {
       return (
         <React.Fragment>
           <h1>Something went wrong.</h1>
-          <p>{ this.state.errorInfo.componentStack }</p>
+          <p>{ errorInfo.componentStack }</p>
         </React.Fragment>
       );
     }
 
-    return this.props.children;
+    return children;
   }
 }
 

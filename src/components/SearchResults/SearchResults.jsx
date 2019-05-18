@@ -14,14 +14,18 @@ const SearchResultsComponent = (props) => {
 
   return (
     <div>
-      <div>Number of results: { resultCount }</div>
+      <div>
+Number of results:
+        { resultCount }
+      </div>
       <ul>
         {
           results.map(obj => (
             <ResultsItem
               key={obj.artistId}
               artistName={obj.artistName}
-            />))
+            />
+          ))
         }
       </ul>
     </div>

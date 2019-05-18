@@ -1,4 +1,4 @@
-import makeApiRequest from '../';
+import makeApiRequest from '..';
 
 jest.mock('axios');
 

@@ -2,14 +2,14 @@
 ---
 * NodeJS v8
 * Express v4
-* Isomorphic
+* SSR
 * React v16
-* React Router v4
-* Redux v3
+* React Router v5
+* Redux v7
 * Redux Saga
 * SASS
 * CSS Modules
-* Jest
+* Jest v24
 * Webpack v4
-* Babel v6
-* ESLint v4
+* Babel v7
+* ESLint v5

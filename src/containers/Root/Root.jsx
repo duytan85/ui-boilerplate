@@ -42,10 +42,9 @@ const mapStateToProps = state => ({
   results: state.artists.data.results
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-    getArtists
-  }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getArtists
+}, dispatch);
 
 export default connect(
   mapStateToProps,

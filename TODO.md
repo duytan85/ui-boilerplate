@@ -1,0 +1,11 @@
+- script files
+- babel setup
+- webpack setup
+- jest setup
+- linting setup
+- prettier
+- docker
+
+- react SSR
+- react router
+- react

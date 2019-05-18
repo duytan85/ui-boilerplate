@@ -1,23 +1,19 @@
 import { applyMiddleware, createStore, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import createHistory from 'history/createBrowserHistory';
-import { routerMiddleware } from 'react-router-redux';
+import { createBrowserHistory } from 'history';
 
 import rootReducer from '../redux/rootReducer';
 
 export let history; // eslint-disable-line import/no-mutable-exports
-let routingMiddleware = routerMiddleware();
 const sagaMiddleware = createSagaMiddleware();
 
 if (__CLIENT__) {
-  history = createHistory();
-  routingMiddleware = routerMiddleware(history);
+  history = createBrowserHistory();
 }
 
 const enhancer = () => {
   if (__DEV__) {
     return compose(
-      applyMiddleware(routingMiddleware),
       applyMiddleware(sagaMiddleware),
       typeof window === 'object' && typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined'
         ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
@@ -25,7 +21,6 @@ const enhancer = () => {
   }
 
   return compose(
-    applyMiddleware(routingMiddleware),
     applyMiddleware(sagaMiddleware)
   );
 };

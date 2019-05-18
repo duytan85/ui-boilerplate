@@ -1,13 +1,7 @@
 const webpack = require('webpack');
-const nconf = require('nconf');
 const AssetsPlugin = require('assets-webpack-plugin');
 
-const isDevMode = () =>
-  (process.env.NODE_ENV === 'development');
-
-nconf.argv()
-  .env()
-  .file(`./config/env/${nconf.get('NODE_ENV')}.json`);
+const isDevMode = () => (process.env.NODE_ENV === 'development');
 
 module.exports = {
   mode: isDevMode() ? 'development' : 'production',
@@ -25,10 +19,10 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devServer: {
-    port: nconf.get('DEV_SERVER_PORT'),
+    port: process.env.DEV_SERVER_PORT,
     hot: true,
     proxy: {
-      '/': `http://localhost:${nconf.get('APP_PORT')}`
+      '/': `http://localhost:${process.env.APP_PORT}`
     }
   },
   module: {

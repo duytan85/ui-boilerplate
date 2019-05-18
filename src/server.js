@@ -19,7 +19,8 @@ export default (req, res) => {
       <Router location={req.url} context={staticContext}>
         <App />
       </Router>
-    </Provider>);
+    </Provider>
+  );
 
   const rootMarkup = ReactDOMServer.renderToString(<Html
     content={componentHtml(store)}

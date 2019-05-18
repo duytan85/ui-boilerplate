@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const CleanPlugin = require('clean-webpack-plugin');
 const Visualizer = require('webpack-visualizer-plugin');
@@ -33,7 +32,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanPlugin(path.resolve('./dist/'), { root: path.resolve('../') }),
+    new CleanPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new Visualizer({
       filename: '../stats/bundles/server.html'

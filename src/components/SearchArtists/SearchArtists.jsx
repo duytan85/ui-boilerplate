@@ -19,16 +19,20 @@ class SearchArtistsComponent extends React.Component {
 
   handleSubmit(event) {
     const { getArtists } = this.props;
-    getArtists(this.state.query);
+    const { query } = this.state;
+
+    getArtists(query);
     event.preventDefault();
   }
 
   render() {
+    const { query } = this.state;
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="txtSearchQuery">
           Seach artists on iTunes:
-          <input id="txtSearchQuery" type="text" value={this.state.query} onChange={this.handleChange} />
+          <input id="txtSearchQuery" type="text" value={query} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>

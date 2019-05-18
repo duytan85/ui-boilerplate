@@ -1,4 +1,6 @@
-import { take, put, call, fork } from 'redux-saga/effects';
+import {
+  take, put, call, fork
+} from 'redux-saga/effects';
 
 import makeApiRequest from '../../../utils/makeApiRequest';
 import { GET_ARTISTS } from '../constants';
