@@ -1,22 +1,21 @@
 {
   "name": "boilerplate",
   "version": "1.0.0",
-  "description": "NodeJS, Express, SSR, React, React Router, Redux, Redux Saga, SASS, Jest, Webpack, Babel, ESLint, web application boilerplate",
+  "description": "NodeJS, Express, SSR, React, React Router, Redux, Redux Saga, SASS, Jest, Webpack, Babel, ESLint, Web App Boilerplate",
   "main": "src/index.js",
   "repository": "https://github.com/duytan85/boilerplate",
   "author": "Duytan Hoang <duytanhoang85@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "10.15.3",
+    "yarn": "1.15.2"
+  },
   "scripts": {
     "---------- RUN ----------": "",
-    "start": "better-npm-run start-prod",
+    "start": "node -r dotenv/config dist/server.js",
     "start:dev": "concurrently \"better-npm-run start-dev-client\" \"better-npm-run start-dev-server\"",
-    "start:server": "better-npm-run start-dev-server",
-    "start:client": "better-npm-run start-dev-client",
     "---------- BUILD ----------": "",
     "build": "node scripts/build.js",
-    "build_OLD": "better-npm-run build-server && better-npm-run build-client",
-    "build:server": "better-npm-run build-server",
-    "build:client": "better-npm-run build-client",
     "---------- TEST ----------": "",
     "test": "jest --config jest.json",
     "test:dev": "jest --watch --config jest.json",
@@ -28,12 +27,6 @@
     "lint:fix": "eslint --ext .js --ext .jsx src config --fix"
   },
   "betterScripts": {
-    "start-prod": {
-      "command": "node dist/server.js",
-      "env": {
-        "NODE_ENV": "production"
-      }
-    },
     "start-dev-server": {
       "command": "nodemon src/index.js --watch src --exec babel-node",
       "env": {
@@ -45,23 +38,22 @@
       "env": {
         "NODE_ENV": "development"
       }
-    },
-    "build-server": {
-      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.server.js"
-    },
-    "build-client": {
-      "command": "webpack --colors --display-error-details -p --config config/webpack/webpack.config.client.js"
     }
   },
+  "_moduleAliases": {
+    "@": "."
+  },
   "dependencies": {
+    "@babel/polyfill": "7.4.4",
     "axios": "0.18.0",
     "better-npm-run": "0.1.1",
-    "dotenv": "^8.0.0",
+    "dotenv": "8.0.0",
     "express": "4.16.4",
     "express-ping": "1.4.0",
     "history": "4.9.0",
     "http-proxy-middleware": "0.19.1",
     "lodash.clonedeep": "4.5.0",
+    "module-alias": "2.2.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-redux": "7.0.3",
@@ -73,15 +65,14 @@
   },
   "devDependencies": {
     "@babel/cli": "7.4.4",
-    "@babel/core": "7.4.4",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/node": "7.4.5",
+    "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
     "assets-webpack-plugin": "3.9.10",
     "babel-eslint": "10.0.1",
     "babel-loader": "8.0.6",
     "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-polyfill": "6.26.0",
     "clean-webpack-plugin": "2.0.2",
     "concurrently": "4.1.0",
     "eslint": "5.16.0",
@@ -91,10 +82,10 @@
     "eslint-plugin-react": "7.13.0",
     "jest": "24.8.0",
     "nodemon": "1.19.0",
-    "webpack": "4.31.0",
+    "webpack": "4.32.2",
+    "webpack-bundle-analyzer": "3.3.2",
     "webpack-cli": "3.3.2",
-    "webpack-dev-server": "3.3.1",
-    "webpack-node-externals": "1.7.2",
-    "webpack-visualizer-plugin": "0.1.11"
+    "webpack-dev-server": "3.4.1",
+    "webpack-node-externals": "1.7.2"
   }
 }

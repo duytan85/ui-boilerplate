@@ -5,11 +5,8 @@ import { createBrowserHistory } from 'history';
 import rootReducer from '../redux/rootReducer';
 
 export let history; // eslint-disable-line import/no-mutable-exports
-const sagaMiddleware = createSagaMiddleware();
 
-if (__CLIENT__) {
-  history = createBrowserHistory();
-}
+const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = () => {
   if (__DEV__) {
@@ -25,7 +22,14 @@ const enhancer = () => {
   );
 };
 
-export default function configureStore(initialState) {
+export default function configureStore({
+  initialState,
+  isClient = false
+}) {
+  if (isClient) {
+    history = createBrowserHistory();
+  }
+
   const store = createStore(rootReducer, initialState, enhancer());
 
   if (module.hot) {

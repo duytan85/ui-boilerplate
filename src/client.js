@@ -8,18 +8,21 @@ import rootSaga from './redux/rootSaga';
 import ErrorBoundary from './components/ErrorBoundary';
 import App from './containers/App';
 
-const store = configureStore(window.__INITIAL_STATE__);
+const store = configureStore({
+  initialState: window.__INITIAL_STATE__,
+  isClient: true
+});
 
 store.runSaga(rootSaga);
 
 hydrate(
-  <ErrorBoundary>
-    <Provider store={store}>
-      <Router history={history}>
+  <Provider store={store}>
+    <Router history={history}>
+      <ErrorBoundary>
         <App />
-      </Router>
-    </Provider>
-  </ErrorBoundary>,
+      </ErrorBoundary>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 

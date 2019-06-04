@@ -6,18 +6,24 @@ import { StaticRouter as Router } from 'react-router';
 import configureStore from './store/configureStore';
 import Html from './containers/Html';
 import App from './containers/App';
+import ErrorBoundary from './components/ErrorBoundary';
 
 export default (req, res) => {
-  const store = configureStore();
+  const store = configureStore({
+    initialState: undefined,
+    isClient: false
+  });
   const staticContext = {
     status: 200,
     store
   };
 
-  const componentHtml = initialStore => ReactDOMServer.renderToString( // eslint-disable-line function-paren-newline
+  const componentHtml = initialStore => ReactDOMServer.renderToString(
     <Provider store={initialStore}>
       <Router location={req.url} context={staticContext}>
-        <App />
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
       </Router>
     </Provider>
   );

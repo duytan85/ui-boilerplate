@@ -3,5 +3,7 @@
 /stats
 /test
 
+.env
+
 .DS_Store
 yarn-error.log

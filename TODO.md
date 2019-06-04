@@ -6,6 +6,11 @@
 - prettier
 - docker
 
+- cluster node app
+- module alias
+- typscript
 - react SSR
 - react router
 - react
+
+- dotenv prod deployment

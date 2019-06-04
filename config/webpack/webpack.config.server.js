@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const CleanPlugin = require('clean-webpack-plugin');
-const Visualizer = require('webpack-visualizer-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   mode: 'production',
@@ -12,7 +12,7 @@ module.exports = {
   },
   entry: {
     server: [
-      'babel-polyfill',
+      '@babel/polyfill',
       './src/index.js'
     ]
   },
@@ -34,8 +34,12 @@ module.exports = {
   plugins: [
     new CleanPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new Visualizer({
-      filename: '../stats/bundles/server.html'
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+      analyzerMode: 'static',
+      reportFilename: '../stats/server/report.html',
+      generateStatsFile: true,
+      statsFilename: '../stats/server/stats.json'
     })
   ]
 };

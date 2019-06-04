@@ -1,19 +1,20 @@
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-const isDevMode = () => (process.env.NODE_ENV === 'development');
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  mode: isDevMode() ? 'development' : 'production',
+  mode: isDev ? 'development' : 'production',
   devtool: 'source-map',
   entry: {
     main: [
-      'babel-polyfill',
+      '@babel/polyfill',
       './src/client.js'
     ]
   },
   output: {
-    filename: isDevMode() ? '[name].bundle.js' : '[name]-[hash].min.js'
+    filename: isDev ? '[name].bundle.js' : '[name]-[hash].min.js'
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -48,6 +49,10 @@ module.exports = {
     }
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __DEV__: isDev,
+    }),
+    new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.HotModuleReplacementPlugin({
       multiStep: true,
     }),
@@ -56,10 +61,12 @@ module.exports = {
       path: 'src',
       update: true
     }),
-    new webpack.DefinePlugin({
-      __DEV__: true,
-      __SERVER__: false,
-      __CLIENT__: true
-    })
+    ...!isDev ? [new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+      analyzerMode: 'static',
+      reportFilename: '../stats/client/report.html',
+      generateStatsFile: true,
+      statsFilename: '../stats/client/stats.json'
+    })] : []
   ]
 };
