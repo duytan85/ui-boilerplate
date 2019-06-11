@@ -5,10 +5,11 @@
 - linting setup [x]
 - prettier [x]
 - docker []
+- circleCI []
 
 - cluster node app []
 - module alias []
-- typscript []
+- typescript []
 - react SSR []
 - react router []
 - react []

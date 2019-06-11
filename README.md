@@ -1,4 +1,4 @@
-# Boilerplate
+# UI Boilerplate (WIP)
 ---
 * NodeJS v8
 * Express v4
