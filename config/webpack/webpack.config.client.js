@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+require('dotenv').config();
 
 const isDev = process.env.NODE_ENV === 'development';
 

@@ -4,14 +4,15 @@
 - jest setup []
 - linting setup [x]
 - prettier [x]
+- typescript []
+
 - docker []
 - circleCI []
+- kubernetes []
+- dotenv prod deployment []
 
 - cluster node app []
 - module alias []
-- typescript []
 - react SSR []
 - react router []
 - react []
-
-- dotenv prod deployment []

@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import proxy from 'http-proxy-middleware';
