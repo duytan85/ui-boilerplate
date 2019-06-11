@@ -11,10 +11,7 @@ module.exports = {
     __dirname: false
   },
   entry: {
-    server: [
-      '@babel/polyfill',
-      './src/index.js'
-    ]
+    server: ['@babel/polyfill', './src/index.js']
   },
   resolve: {
     extensions: ['.js', '.jsx']

@@ -7,26 +7,19 @@ const SearchResultsComponent = (props) => {
   const { isRequesting, resultCount, results } = props;
 
   if (isRequesting) {
-    return (
-      <div>Loading...</div>
-    );
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
       <div>
-Number of results:
-        { resultCount }
+        Number of results:
+        {resultCount}
       </div>
       <ul>
-        {
-          results.map(obj => (
-            <ResultsItem
-              key={obj.artistId}
-              artistName={obj.artistName}
-            />
-          ))
-        }
+        {results.map((obj) => (
+          <ResultsItem key={obj.artistId} artistName={obj.artistName} />
+        ))}
       </ul>
     </div>
   );

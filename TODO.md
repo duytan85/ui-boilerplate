@@ -1,16 +1,16 @@
-- script files
-- babel setup
-- webpack setup
-- jest setup
-- linting setup
-- prettier
-- docker
+- script files [x]
+- babel setup [x]
+- webpack setup []
+- jest setup []
+- linting setup [x]
+- prettier [x]
+- docker []
 
-- cluster node app
-- module alias
-- typscript
-- react SSR
-- react router
-- react
+- cluster node app []
+- module alias []
+- typscript []
+- react SSR []
+- react router []
+- react []
 
-- dotenv prod deployment
+- dotenv prod deployment []

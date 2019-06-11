@@ -12,20 +12,17 @@ const enhancer = () => {
   if (__DEV__) {
     return compose(
       applyMiddleware(sagaMiddleware),
-      typeof window === 'object' && typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined'
-        ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+      typeof window === 'object' &&
+        typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined'
+        ? window.__REDUX_DEVTOOLS_EXTENSION__()
+        : (f) => f
     );
   }
 
-  return compose(
-    applyMiddleware(sagaMiddleware)
-  );
+  return compose(applyMiddleware(sagaMiddleware));
 };
 
-export default function configureStore({
-  initialState,
-  isClient = false
-}) {
+export default function configureStore({ initialState, isClient = false }) {
   if (isClient) {
     history = createBrowserHistory();
   }

@@ -37,15 +37,19 @@ RootContainer.propTypes = {
   getArtists: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isRequesting: state.artists.ui.isRequesting,
   resultCount: state.artists.data.resultCount,
   results: state.artists.data.results
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  getArtists
-}, dispatch);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      getArtists
+    },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,

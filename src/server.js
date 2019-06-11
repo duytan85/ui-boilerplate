@@ -18,22 +18,23 @@ export default (req, res) => {
     store
   };
 
-  const componentHtml = initialStore => ReactDOMServer.renderToString(
-    <Provider store={initialStore}>
-      <Router location={req.url} context={staticContext}>
-        <ErrorBoundary>
-          <App />
-        </ErrorBoundary>
-      </Router>
-    </Provider>
+  const componentHtml = (initialStore) =>
+    ReactDOMServer.renderToString(
+      <Provider store={initialStore}>
+        <Router location={req.url} context={staticContext}>
+          <ErrorBoundary>
+            <App />
+          </ErrorBoundary>
+        </Router>
+      </Provider>
+    );
+
+  const rootMarkup = ReactDOMServer.renderToString(
+    <Html
+      content={componentHtml(store)}
+      initialState={staticContext.store.getState()}
+    />
   );
 
-  const rootMarkup = ReactDOMServer.renderToString(<Html
-    content={componentHtml(store)}
-    initialState={staticContext.store.getState()}
-  />);
-
-  res
-    .status(staticContext.status)
-    .send(`<!DOCTYPE html>${rootMarkup}`);
+  res.status(staticContext.status).send(`<!DOCTYPE html>${rootMarkup}`);
 };

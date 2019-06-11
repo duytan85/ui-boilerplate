@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 const makeApiRequest = async (config) => {
-  const {
-    url, methodType, body, responseType, headers
-  } = config;
+  const { url, methodType, body, responseType, headers } = config;
 
   try {
     return await axios({

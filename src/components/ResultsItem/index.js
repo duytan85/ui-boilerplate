@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 const ResultsItemComponent = (props) => {
   const { artistName } = props;
 
-  return (
-    <li>{ artistName }</li>
-  );
+  return <li>{artistName}</li>;
 };
 
 ResultsItemComponent.propTypes = {

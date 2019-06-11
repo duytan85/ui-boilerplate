@@ -25,10 +25,12 @@ const createBundle = (config) => {
       console.warn(info.warnings);
     }
 
-    console.info(stats.toString({
-      chunks: false,
-      colors: true
-    }));
+    console.info(
+      stats.toString({
+        chunks: false,
+        colors: true
+      })
+    );
   });
 };
 

@@ -8,10 +8,7 @@ module.exports = {
   mode: isDev ? 'development' : 'production',
   devtool: 'source-map',
   entry: {
-    main: [
-      '@babel/polyfill',
-      './src/client.js'
-    ]
+    main: ['@babel/polyfill', './src/client.js']
   },
   output: {
     filename: isDev ? '[name].bundle.js' : '[name]-[hash].min.js'
@@ -50,23 +47,27 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      __DEV__: isDev,
+      __DEV__: isDev
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.HotModuleReplacementPlugin({
-      multiStep: true,
+      multiStep: true
     }),
     new AssetsPlugin({
       filename: 'asset-tags.json',
       path: 'src',
       update: true
     }),
-    ...!isDev ? [new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-      analyzerMode: 'static',
-      reportFilename: '../stats/client/report.html',
-      generateStatsFile: true,
-      statsFilename: '../stats/client/stats.json'
-    })] : []
+    ...(!isDev
+      ? [
+          new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerMode: 'static',
+            reportFilename: '../stats/client/report.html',
+            generateStatsFile: true,
+            statsFilename: '../stats/client/stats.json'
+          })
+        ]
+      : [])
   ]
 };

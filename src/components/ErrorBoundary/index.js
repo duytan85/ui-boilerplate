@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class ErrorBoundary extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -29,7 +29,7 @@ class ErrorBoundary extends React.Component {
       return (
         <React.Fragment>
           <h1>Something went wrong.</h1>
-          <p>{ errorInfo.componentStack }</p>
+          <p>{errorInfo.componentStack}</p>
         </React.Fragment>
       );
     }

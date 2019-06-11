@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class SearchArtistsComponent extends React.Component {
   static propTypes = {
     getArtists: PropTypes.func.isRequired
-  }
+  };
 
   constructor() {
     super();
@@ -32,7 +32,12 @@ class SearchArtistsComponent extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="txtSearchQuery">
           Seach artists on iTunes:
-          <input id="txtSearchQuery" type="text" value={query} onChange={this.handleChange} />
+          <input
+            id="txtSearchQuery"
+            type="text"
+            value={query}
+            onChange={this.handleChange}
+          />
         </label>
         <input type="submit" value="Submit" />
       </form>

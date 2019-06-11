@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import express from 'express';
 import path from 'path';
 import proxy from 'http-proxy-middleware';
@@ -20,21 +22,28 @@ app.use(favicon(path.join(__dirname, '../', 'public', 'favicon.ico')));
 // -------------------------------------------------
 app.use(health.ping('/health-check'));
 
-app.use('/search', proxy({ target: process.env.ITUNES_URL, changeOrigin: true }));
+app.use(
+  '/search',
+  proxy({ target: process.env.ITUNES_URL, changeOrigin: true })
+);
 
 app.get('*', require('./server').default);
 
 app.listen(port, (err) => {
   if (err) {
     console.error('');
-    console.error('🔥 🔥 🔥  ERROR: 💩 There\'s been an error!!! 🔥 🔥 🔥');
+    console.error("🔥 🔥 🔥  ERROR: 💩 There's been an error!!! 🔥 🔥 🔥");
     console.error(`${err}`);
     console.error('');
     return;
   }
 
   console.info('');
-  console.info(`✅  Server running on 👉 http://localhost:${__DEV__ ? process.env.DEV_SERVER_PORT : port} 👈`);
+  console.info(
+    `✅  Server running on 👉 http://localhost:${
+      __DEV__ ? process.env.DEV_SERVER_PORT : port
+    } 👈`
+  );
   console.info(`🏠  NODE_ENV has been set to: ${process.env.NODE_ENV}`);
   console.info('');
 });
