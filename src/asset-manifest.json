@@ -1,0 +1,8 @@
+{
+  "main": {
+    "js": "main-fb498f79076d29de3e7b.min.js"
+  },
+  "vendors": {
+    "js": "vendors-fb498f79076d29de3e7b.min.js"
+  }
+}

@@ -1,6 +1,6 @@
 - script files [x]
 - babel setup [x]
-- webpack setup []
+- webpack setup [x]
 - jest setup []
 - linting setup [x]
 - prettier [x]

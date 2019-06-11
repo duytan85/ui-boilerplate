@@ -54,9 +54,11 @@ module.exports = {
       multiStep: true
     }),
     new AssetsPlugin({
-      filename: 'asset-tags.json',
+      filename: 'asset-manifest.json',
       path: 'src',
-      update: true
+      update: true,
+      prettyPrint: true,
+      keepInMemory: true
     }),
     ...(!isDev
       ? [

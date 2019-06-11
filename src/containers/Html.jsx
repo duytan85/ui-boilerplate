@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import asset from '../asset-tags.json';
+import asset from '../asset-manifest.json';
 
 function renderInitialState(initialState) {
   const innerHtml = `window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}`;
