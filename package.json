@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "ui-boilerplate",
   "version": "1.0.0",
   "description": "NodeJS, Express, SSR, React, React Router, Redux, Redux Saga, SASS, Jest, Webpack, Babel, ESLint, Web App Boilerplate",
   "main": "src/index.js",
@@ -22,10 +22,8 @@
     "test": "jest --config jest.json",
     "test:dev": "jest --watch --config jest.json",
     "test:coverage": "jest --coverage --config jest.json",
-    "test:updateSnapshot": "jest --updateSnapshot --config jest.json",
     "---------- LINT ----------": "",
-    "lint": "yarn run lint:js",
-    "lint:js": "eslint --ext .js --ext .jsx src config",
+    "lint": "eslint --ext .js --ext .jsx src config",
     "lint:fix": "eslint --ext .js --ext .jsx src config --fix",
     "format": "prettier --write -- '**/*.js'"
   },

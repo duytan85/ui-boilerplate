@@ -13,3 +13,19 @@
 * Webpack v4
 * Babel v7
 * ESLint v5
+
+## Install
+```yarn```
+
+## Build
+```yarn build```
+
+## Run
+Dev: ```yarn start:dev```
+Prod: ```yarn start```
+
+## Test
+```yarn test```
+
+## Lint
+```yarn lint```
